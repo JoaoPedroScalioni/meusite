@@ -5,7 +5,6 @@
   padding: 0;
 }
 
-
 /* Variáveis de cores e fontes */
 :root {
   --primary: #6a855a; /* Verde mais escuro */
@@ -16,7 +15,6 @@
   --font-heading: 'Montserrat', sans-serif; /* Fonte moderna para títulos */
   --font-body: 'Roboto', sans-serif; /* Fonte limpa para o corpo do texto */
 }
-
 
 /* Ajuste nos botões */
 .cta-btn {
@@ -50,146 +48,235 @@ p {
   color: var(--dark); /* Preto suave para texto */
 }
 
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Banner Responsivo</title>
-  <style>
-    /* Variáveis para cores e fontes */
-    :root {
-      --font-heading: 'Arial', sans-serif;
-      --accent: #FF5733;
-      --secondary: #C70039;
-      --dark: #333;
-      --light: #fff;
-    }
-    
 /* ========= Banner ========= */
 .banner {
   position: relative;
   width: 100%;
-  height: 750px; /* Altura maior para telas grandes */
+  height: 600px; /* Altura ajustada para melhor responsividade */
   overflow: hidden;
-  z-index: 0; /* Garante que o banner fique abaixo das outras seções */
+  z-index: 0;
 }
 
 .banner img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Garante que a imagem cubra o espaço sem distorção */
-  transform: scale(1.05); /* Leve zoom na imagem para dar foco */
+  object-fit: cover;
+  transform: scale(1.05);
 }
 
 .banner-text {
   position: absolute;
-  top: 50%; /* Centraliza verticalmente o texto */
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%); /* Ajusta para o centro perfeito */
+  transform: translateX(-50%) translateY(-50%);
   text-align: center;
-  background: rgba(255, 255, 255, 0.7); /* Fundo suave para contraste com a imagem */
+  background: rgba(255, 255, 255, 0.7);
   padding: 20px 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1; /* Garante que o texto fique acima da imagem */
+  z-index: 1;
 }
 
 .banner-text h2 {
   font-family: var(--font-heading);
   font-size: 2.8em;
-  color: var(--primary); /* Verde mais escuro */
+  color: var(--primary);
   margin: 0;
 }
 
-.banner-text .separator {
+/* ========= Caixa "Cuide da Sua Beleza!" ========= */
+.cta-box {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  padding: 15px 20px;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  text-align: center;
   width: 70%;
-  height: 2px;
-  background: var(--secondary); /* Dourado */
-  margin: 15px auto;
-  border-radius: 5px;
+  max-width: 700px;
+  transition: all 0.3s ease;
+  top: 50%; /* Centraliza entre o banner e a descrição */
 }
 
-.banner-text p {
+.cta-box h3 {
+  font-size: 2.8em;
+  color: var(--primary);
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.cta-box p {
   font-size: 1.4em;
-  color: var(--dark); /* Texto escuro */
-  margin-bottom: 20px;
+  color: var(--dark);
+  margin-top: 15px;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
-/* Botão de Chamada para Ação */
-.cta-btn {
+.cta-button {
   display: inline-block;
-  padding: 12px 30px;
-  background: var(--accent); /* Verde claro */
-  color: var(--light); /* Texto claro */
+  margin-top: 25px;
+  padding: 15px 30px;
+  font-size: 1.4em;
+  background-color: var(--secondary);
+  color: var(--dark);
   text-decoration: none;
-  border-radius: 25px;
-  font-size: 1.2em;
+  border-radius: 35px;
   font-weight: 600;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.cta-btn:hover {
-  background: var(--secondary); /* Dourado */
+.cta-button:hover {
+  background-color: var(--accent);
   transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-.cta-btn i {
-  margin-right: 8px;
+.cta-button span {
+  display: inline-block;
+  transition: transform 0.3s ease;
 }
 
-/* Responsividade para dispositivos móveis */
-@media (max-width: 768px) {
-  .banner {
-    height: 500px; /* Reduz a altura do banner em dispositivos móveis */
+.cta-button:hover span {
+  transform: translateY(-5px);
+}
+
+/* ========= Responsividade ========= */
+
+/* Para telas maiores que 1440px (desktop ultra grande) */
+@media (min-width: 1440px) {
+  .cta-box {
+    top: 50%; /* Centraliza a caixa entre o banner e a seção descrição */
   }
 
-  .banner-text {
-    bottom: 15%; /* Ajuste a posição do texto para não cobrir demais a imagem */
-    padding: 15px 20px; /* Reduz o padding para dispositivos móveis */
+  .cta-box h3 {
+    font-size: 3em;
+  }
+
+  .cta-box p {
+    font-size: 1.6em;
+  }
+
+  .cta-button {
+    font-size: 1.5em;
+    padding: 18px 35px;
+  }
+}
+
+/* Para telas grandes (desktops e monitores) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .cta-box {
+    top: 50%; /* Centraliza a caixa entre o banner e a seção descrição */
+  }
+
+  .cta-box h3 {
+    font-size: 3em;
+  }
+
+  .cta-box p {
+    font-size: 1.6em;
+  }
+
+  .cta-button {
+    font-size: 1.5em;
+    padding: 18px 35px;
+  }
+}
+
+/* Para notebooks (telas com largura entre 1024px e 1200px) */
+@media (max-width: 1200px) and (min-width: 1024px) {
+  .cta-box {
+    top: 52%; /* Ajustado para ficar mais centralizado em 1024x768 */
+  }
+
+  .cta-box h3 {
+    font-size: 2.8em;
+  }
+
+  .cta-box p {
+    font-size: 1.4em;
+  }
+
+  .cta-button {
+    font-size: 1.4em;
+    padding: 15px 30px;
+  }
+}
+
+/* Para telas de 1024x768 */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .cta-box {
+    top: 52%; /* Ajusta a posição para centralizar melhor em 1024x768 */
+  }
+}
+
+/* Para telas de 1440x900 */
+@media (max-width: 1440px) and (min-width: 900px) {
+  .cta-box {
+    top: 52%; /* Ajusta para centralizar a caixa entre o banner e a descrição */
+  }
+}
+
+/* Para telas 2560x1440 */
+@media (min-width: 2560px) {
+  .cta-box {
+    top: 48%; /* Ajuste para subir um pouco a caixa em 2560x1440 */
+  }
+}
+
+/* Para tablets (dispositivos com largura entre 600px e 1024px) */
+@media (max-width: 1024px) {
+  .cta-box {
+    top: 60%; /* Ajusta a posição da caixa */
+    width: 80%;
+  }
+
+  .cta-box h3 {
+    font-size: 2.5em;
+  }
+
+  .cta-box p {
+    font-size: 1.2em;
+  }
+
+  .cta-button {
+    font-size: 1.2em;
+    padding: 12px 25px;
+  }
+}
+
+/* Para dispositivos móveis (dispositivos com largura até 600px) */
+@media (max-width: 600px) {
+  .banner {
+    height: 300px;
   }
 
   .banner-text h2 {
-    font-size: 2.2em; /* Ajusta o tamanho do título */
+    font-size: 1.8em;
   }
 
-  .banner-text p {
-    font-size: 1.1em; /* Ajusta o tamanho do texto */
+  .cta-box {
+    width: 90%;
+    top: 40%;
+    padding: 15px 20px;
   }
 
-  .cta-btn {
-    font-size: 1em; /* Ajuste no tamanho do botão */
-    padding: 10px 25px; /* Ajuste no tamanho do botão */
-  }
-}
-
-/* Responsividade para telas muito pequenas */
-@media (max-width: 480px) {
-  .banner {
-    height: 400px; /* Menor altura para telas muito pequenas */
+  .cta-box h3 {
+    font-size: 2em;
   }
 
-  .banner-text {
-    bottom: 20%; /* Ajusta a posição do texto para que ele não fique muito baixo */
-    padding: 10px 15px; /* Reduz ainda mais o padding */
+  .cta-box p {
+    font-size: 1em;
   }
 
-  .banner-text h2 {
-    font-size: 1.8em; /* Menor tamanho do título */
-  }
-
-  .banner-text p {
-    font-size: 1em; /* Menor tamanho do texto */
-  }
-
-  .cta-btn {
-    font-size: 0.9em; /* Menor tamanho do botão */
-    padding: 8px 20px; /* Menor padding do botão */
+  .cta-button {
+    font-size: 1.2em;
+    padding: 10px 20px;
   }
 }
 
@@ -203,23 +290,28 @@ p {
   align-items: center;
   padding: 50px 20px;
   background-color: var(--light); /* Bege claro */
+  overflow: visible; /* Garante que o overflow seja visível */
 }
 
 .descricao-container {
-  display: flex;
-  justify-content: space-between;
+  position: relative; /* Garante que o z-index da caixa funcione corretamente */
+  z-index: 1;
+  display: flex; /* Flexbox para alinhar imagem e texto lado a lado */
+  justify-content: space-between; /* Garantir que a imagem e o texto se distribuem ao longo da linha */
   max-width: 1200px;
   padding: 50px;
-  background: rgba(255, 255, 255, 0.8); /* Fundo suave */
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 15px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
   text-align: left;
-  border-left: 8px solid var(--secondary); /* Dourado */
+  border-left: 8px solid var(--secondary);
   transform: translateY(20px);
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
+  margin-top: 130px; /* Adiciona um espaço acima do container */
 }
 
+/* Animação fadeIn */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -251,16 +343,18 @@ p {
   color: var(--dark); /* Preto suave */
   line-height: 1.8;
   margin-bottom: 20px;
+  text-align: justify; /* Alinha o texto */
+  hyphens: auto; /* Quebra de palavras se necessário */
 }
 
 .descricao-imagem {
-  flex: 1;
-  margin-right: 40px;
+  flex: 1; /* A imagem ocupa metade do espaço */
+  margin-right: 40px; /* Espaço entre a imagem e o texto */
 }
 
 .descricao-imagem img {
   width: 100%;
-  max-width: 500px;
+  max-width: 500px; /* Limita o tamanho máximo da imagem */
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   object-fit: cover;
@@ -272,46 +366,196 @@ p {
 }
 
 .descricao-texto {
-  flex: 1.5;
+  flex: 1.5; /* O texto ocupa mais espaço */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.descricao-texto p {
+
+/* ========= Seção DESCRIÇÃO ========= */
+.descricao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  background-color: var(--light); /* Bege claro */
+  overflow: visible; /* Garante que o overflow seja visível */
+}
+
+.descricao-container {
+  position: relative; /* Garante que o z-index da caixa funcione corretamente */
+  z-index: 1;
+  display: flex; /* Flexbox para alinhar imagem e texto lado a lado */
+  justify-content: space-between; /* Garantir que a imagem e o texto se distribuem ao longo da linha */
+  max-width: 1200px;
+  padding: 50px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  border-left: 8px solid var(--secondary);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  margin-top: 160px; /* Adiciona um espaço acima do container */
+}
+
+/* Animação fadeIn */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.descricao-container h2 {
+  font-size: 2.5em;
+  color: var(--primary); /* Verde mais escuro */
+  font-weight: bold;
   margin-bottom: 20px;
 }
 
-/* ===== Responsividade ===== */
-@media (max-width: 768px) {
-  .descricao-container {
-    flex-direction: column;
-    padding: 30px;
-    text-align: center;
-  }
+.separator {
+  width: 60px;
+  height: 3px;
+  background: var(--secondary); /* Dourado */
+  margin: 15px 0;
+  border-radius: 5px;
+}
 
-  .descricao-imagem {
-    margin-right: 0;
-    margin-bottom: 30px;
+.descricao-container p {
+  font-size: 1.25em;
+  color: var(--dark); /* Preto suave */
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: justify; /* Alinha o texto */
+  hyphens: auto; /* Quebra de palavras se necessário */
+}
+
+.descricao-imagem {
+  flex: 1; /* A imagem ocupa metade do espaço */
+  margin-right: 40px; /* Espaço entre a imagem e o texto */
+}
+
+.descricao-imagem img {
+  width: 100%;
+  max-width: 500px; /* Limita o tamanho máximo da imagem */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.descricao-imagem img:hover {
+  transform: scale(1.05);
+}
+
+.descricao-texto {
+  flex: 1.5; /* O texto ocupa mais espaço */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ========= Responsividade ========= */
+
+/* Para telas grandes (desktops e monitores) */
+@media (min-width: 1200px) {
+  .descricao-container {
+    padding: 70px;
+    max-width: 1400px; /* Maior largura para telas grandes */
   }
 
   .descricao-container h2 {
-    font-size: 2em;
+    font-size: 3em; /* Aumenta o tamanho do título para telas maiores */
   }
 
   .descricao-container p {
-    font-size: 1.1em;
+    font-size: 1.4em; /* Aumenta o tamanho do texto */
   }
 
   .descricao-imagem img {
-    max-width: 100%;
+    max-width: 600px; /* Aumenta o tamanho máximo da imagem */
+  }
+}
+
+/* Para notebooks (telas com largura entre 1024px e 1200px) */
+@media (max-width: 1200px) and (min-width: 1024px) {
+  .descricao-container {
+    padding: 60px;
+  }
+
+  .descricao-container h2 {
+    font-size: 2.8em; /* Ajusta o tamanho do título para telas médias */
+  }
+
+  .descricao-container p {
+    font-size: 1.3em; /* Ajusta o tamanho do texto */
+  }
+
+  .descricao-imagem img {
+    max-width: 550px; /* Ajusta o tamanho da imagem */
+  }
+}
+
+/* Para tablets (telas com largura entre 600px e 1024px) */
+@media (max-width: 1024px) {
+  .descricao {
+    flex-direction: column; /* Muda para layout de coluna */
+    padding: 40px 20px;
+  }
+
+  .descricao-container {
+    flex-direction: column; /* Organiza o texto e a imagem em coluna */
+    padding: 30px;
+  }
+
+  .descricao-container h2 {
+    font-size: 2.2em; /* Ajusta o tamanho do título */
+  }
+
+  .descricao-container p {
+    font-size: 1.2em; /* Ajusta o tamanho do texto */
+  }
+
+  .descricao-imagem {
+    margin-right: 0; /* Remove o espaço à direita da imagem */
+    margin-bottom: 20px; /* Adiciona margem inferior */
+  }
+
+  .descricao-imagem img {
+    max-width: 100%; /* Aumenta o tamanho da imagem */
+  }
+}
+
+/* Para dispositivos móveis (telas abaixo de 600px) */
+@media (max-width: 600px) {
+  .descricao-container {
+    padding: 20px;
+  }
+
+  .descricao-container h2 {
+    font-size: 2em; /* Ajusta o tamanho do título */
+  }
+
+  .descricao-container p {
+    font-size: 1.1em; /* Ajusta o tamanho do texto */
+  }
+
+  .descricao-imagem img {
+    max-width: 100%; /* Aumenta o tamanho da imagem */
+    border-radius: 8px; /* Diminui o arredondamento da borda para telas pequenas */
   }
 }
 
 
 
-
-/* Redes Sociais */
+/* ========= Redes Sociais ========= */
 .redes-sociais {
   position: relative;
   padding: 50px 20px;
@@ -402,8 +646,60 @@ p {
   background: #D44638; /* Gmail */
 }
 
-/* Responsividade */
+
+/* ===== Responsividade ===== */
+@media (max-width: 1024px) {
+  /* Seção Descrição */
+  .descricao-container {
+    flex-direction: column; /* Organiza imagem e texto em coluna */
+    padding: 30px;
+  }
+
+  .descricao-imagem {
+    margin-right: 0;
+    margin-bottom: 30px; /* Espaço entre a imagem e o texto */
+  }
+
+  .descricao-container h2 {
+    font-size: 2.2em; /* Reduz o tamanho do título */
+  }
+
+  .descricao-container p {
+    font-size: 1.15em; /* Ajuste da fonte */
+  }
+
+  /* Redes Sociais */
+  .social-card {
+    width: 150px;
+    height: 150px;
+  }
+
+  .social-img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
 @media (max-width: 768px) {
+  /* Seção Descrição */
+  .descricao-container {
+    padding: 20px;
+  }
+
+  .descricao-imagem {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .descricao-container h2 {
+    font-size: 2em;
+  }
+
+  .descricao-container p {
+    font-size: 1.1em;
+  }
+
+  /* Redes Sociais */
   .social-container {
     flex-direction: column;
     gap: 20px;
@@ -421,11 +717,41 @@ p {
   }
 }
 
+@media (max-width: 480px) {
+  /* Seção Descrição */
+  .descricao-container {
+    padding: 15px;
+  }
+
+  .descricao-container h2 {
+    font-size: 1.6em;
+  }
+
+  .descricao-container p {
+    font-size: 1em;
+  }
+
+  /* Redes Sociais */
+  .social-card {
+    width: 130px;
+    height: 130px;
+  }
+
+  .social-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .social-card span {
+    font-size: 0.9em; /* Reduz o tamanho do texto */
+  }
+}
 
 
 
-/* ========= Carrossel (Resultados) ========= */
-/* ========= Carrossel (Resultados) ========= */
+
+
+
 /* ========= Carrossel (Galeria de Resultados) ========= */
 .carrossel {
   padding: 60px 20px;
@@ -595,7 +921,7 @@ p {
 }
 
 /* Responsividade para dispositivos móveis */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .carousel-wrapper {
     flex-direction: column;
     gap: 20px;
@@ -610,6 +936,7 @@ p {
 
   .slider-track {
     width: 100%;
+    display: flex;
   }
 
   .slider-track img {
@@ -642,8 +969,156 @@ p {
   }
 }
 
+@media (max-width: 768px) {
+  /* Seção Descrição */
+  .carousel-description {
+    padding: 20px 15px;
+    min-width: 250px; /* Ajuste para telas menores */
+  }
 
+  .carousel-description-content h3 {
+    font-size: 1.8rem; /* Tamanho reduzido */
+  }
 
+  .carousel-description-content p {
+    font-size: 1rem; /* Ajuste de fonte */
+  }
+
+  .carousel-wrapper {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .carousel-slider {
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+  }
+
+  .slider-track {
+    width: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Garantir transição suave */
+  }
+
+  .slider-track img {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+  }
+
+  .slider-nav {
+    font-size: 1.5rem;
+    padding: 10px;
+  }
+
+  .slider-indicators {
+    bottom: 5px;
+  }
+
+  .slider-indicators .indicator {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-description {
+    padding: 15px 10px;
+    min-width: 200px;
+  }
+
+  .carousel-description-content h3 {
+    font-size: 1.6rem;
+  }
+
+  .carousel-description-content p {
+    font-size: 0.9rem;
+  }
+
+  .carousel-wrapper {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .carousel-slider {
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+  }
+
+  .slider-track {
+    width: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Garantir transição suave */
+  }
+
+  .slider-track img {
+    width: 100%;
+    height: auto;
+  }
+
+  .slider-nav {
+    font-size: 1.2rem;
+    padding: 8px;
+  }
+
+  .slider-indicators {
+    bottom: 5px;
+    gap: 6px;
+  }
+
+  .slider-indicators .indicator {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+/* Para telas grandes (desktops e monitores) */
+@media (min-width: 1025px) {
+  .carousel-wrapper {
+    gap: 40px;
+    justify-content: center;
+    max-width: 1300px;
+  }
+
+  .carousel-slider {
+    width: 90%; /* Ajustar a largura do carrossel */
+    max-width: 100%;
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .slider-track img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-right: 0;
+  }
+
+  .slider-nav {
+    font-size: 2rem;
+    padding: 15px;
+  }
+
+  .slider-indicators {
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .slider-indicators .indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+}
 
 
 
@@ -654,7 +1129,6 @@ p {
   background: linear-gradient(135deg, #6a855a, #C6A964); /* Gradiente suave de verde */
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra suave para destacar a seção */
-
   overflow: hidden;
 }
 
@@ -759,45 +1233,128 @@ p {
   right: 10px;
 }
 
+/* ===== Responsividade para a Seção de Reviews ===== */
+@media (max-width: 768px) {
+  .reviews-title {
+    font-size: 1.5rem; /* Tamanho reduzido */
+  }
+
+  .review-cards-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .review-card {
+    padding: 15px;
+    max-width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .review-avatar {
+    margin-bottom: 10px; /* Ajuste no espaçamento da imagem do avatar */
+  }
+
+  .review-content {
+    text-align: center;
+  }
+
+  .review-header {
+    font-size: 0.85rem; /* Redução do tamanho da fonte no cabeçalho */
+  }
+
+  .review-stars {
+    font-size: 0.9rem; /* Reduz o tamanho das estrelas */
+  }
+
+  .review-text {
+    font-size: 0.85rem; /* Ajuste do texto para telas menores */
+  }
+
+  .review-google-icon {
+    right: 10px;
+    bottom: 10px;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-title {
+    font-size: 1.3rem; /* Fontes menores em dispositivos pequenos */
+  }
+
+  .review-card {
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .review-avatar {
+    width: 35px;
+    height: 35px;
+  }
+
+  .review-content {
+    font-size: 0.8rem; /* Ajuste de fonte */
+  }
+
+  .review-header {
+    font-size: 0.75rem;
+  }
+
+  .review-stars {
+    font-size: 0.8rem;
+  }
+
+  .review-google-icon {
+    right: 8px;
+    bottom: 8px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
 
 /* ===== Estilo do Rodapé ===== */
 .footer {
   background: var(--primary); /* Verde escuro */
   color: var(--light); /* Texto claro */
-  padding: 40px 20px;
+  padding: 50px 20px;
   text-align: center;
+  box-sizing: border-box; /* Inclui o padding no cálculo do tamanho */
 }
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Garante que os itens fiquem igualmente distribuídos */
   gap: 40px;
-  flex-wrap: wrap;
-  margin-bottom: 30px;
+  flex-wrap: wrap; /* Permite que os itens se movam para a linha seguinte se necessário */
+  margin-bottom: 40px;
+  align-items: center; /* Alinha os itens verticalmente ao centro */
 }
 
 .footer-logo {
   flex: 1;
   text-align: left;
-  margin-bottom: 20px; /* Adiciona margem para separar o logo do restante */
 }
 
 .footer-logo .logo-img {
-  width: 250px; /* Ajuste no tamanho do logo */
+  width: 230px; /* Ajuste do tamanho do logo */
+  max-width: 100%;
 }
 
 .footer-info {
-  flex: 2;
+  flex: 3; /* Garante que a área de informações ocupe mais espaço */
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px; /* Ajuste para espaçamento mais equilibrado */
-  margin-bottom: 20px;
+  gap: 30px;
+  flex-wrap: wrap; /* Permite que os itens se movam para a linha seguinte se não couberem */
 }
 
 .footer-info-item {
   max-width: 220px;
-  font-size: 0.95em; /* Ajuste para fontes mais suaves */
+  font-size: 1em; /* Fonte levemente maior */
+  text-align: left; /* Alinha o texto à esquerda */
 }
 
 .footer-info-item strong {
@@ -808,30 +1365,29 @@ p {
 .footer-social {
   flex: 1;
   display: flex;
-  justify-content: flex-end;
-  gap: 20px; /* Aumenta o espaçamento entre os ícones */
+  justify-content: center;
+  gap: 30px;
   align-items: center;
   padding-right: 20px;
-  margin-bottom: 20px;
 }
 
 .footer-social .social-icon {
   color: var(--light); /* Ícones brancos */
-  font-size: 1.3em; /* Ajuste nos tamanhos para ícones intermediários */
+  font-size: 1.5em; /* Ícones de tamanho maior */
   text-decoration: none;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .footer-social .social-icon:hover {
   color: var(--secondary); /* Dourado */
-  transform: scale(1.2); /* Efeito de aumento suave ao passar o mouse */
+  transform: scale(1.1); /* Efeito de aumento suave */
 }
 
 .footer-bottom {
   margin-top: 30px;
-  font-size: 1em; /* Ajuste na fonte para tornar mais legível */
-  border-top: 1px solid var(--light); /* Usando cor clara para o topo da borda */
-  padding-top: 15px;
+  font-size: 1.1em; /* Aumenta um pouco o tamanho da fonte */
+  border-top: 1px solid var(--light); /* Borda clara */
+  padding-top: 20px;
 }
 
 .footer-bottom p {
@@ -843,7 +1399,7 @@ p {
   margin-top: 15px;
   color: var(--light);
   text-decoration: none;
-  font-size: 1.3em;
+  font-size: 1.4em;
 }
 
 .footer-bottom .back-to-top:hover {
@@ -862,12 +1418,7 @@ p {
   .footer-info {
     flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
-  }
-
-  .footer-social {
-    justify-content: center;
-    margin-top: 20px;
+    margin-bottom: 40px;
   }
 
   .footer-logo {
@@ -877,28 +1428,30 @@ p {
   .footer-bottom {
     text-align: center;
   }
+
+  .footer-social {
+    justify-content: center;
+    margin-top: 20px;
+  }
 }
 
 @media (max-width: 480px) {
-  /* Ajustes para telas muito pequenas */
   .footer-logo .logo-img {
-    width: 200px; /* Reduz o tamanho do logo em telas pequenas */
+    width: 180px; /* Logo menor em telas pequenas */
   }
 
   .footer-info-item {
-    font-size: 0.85em; /* Ajuste na fonte para telas pequenas */
+    font-size: 0.9em; /* Ajuste de fonte para telas pequenas */
   }
 
   .footer-social .social-icon {
-    font-size: 1.2em; /* Ajuste de ícones para melhor visualização em dispositivos móveis */
+    font-size: 1.4em; /* Ícones maiores em telas pequenas */
   }
 
   .footer-bottom .back-to-top {
-    font-size: 1.2em; /* Ajuste de fonte para o link de voltar ao topo */
+    font-size: 1.3em; /* Ajuste da fonte do link de voltar ao topo */
   }
 }
-
-
 
 
 
@@ -921,6 +1474,7 @@ p {
   margin: 0 auto;
   gap: 40px;
   margin-bottom: 30px;
+  flex-wrap: wrap; /* Permite que os itens se movam para a linha seguinte se necessário */
 }
 
 .estatistica {
@@ -1010,13 +1564,39 @@ p {
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .estatisticas-container {
     flex-direction: column;
+    gap: 30px; /* Reduz o espaçamento entre os itens */
   }
 
   .estatistica {
     margin-bottom: 30px;
+    padding: 20px; /* Ajuste no padding */
+  }
+
+  .estatistica i {
+    font-size: 2.8em; /* Redução do tamanho do ícone */
+  }
+
+  .estatistica h3 {
+    font-size: 2.5em; /* Tamanho do título reduzido */
+  }
+
+  .estatistica p {
+    font-size: 1em; /* Ajuste no tamanho do parágrafo */
+  }
+}
+
+@media (max-width: 768px) {
+  .estatisticas-container {
+    flex-direction: column;
+    gap: 20px; /* Ajuste o espaço entre os itens */
+  }
+
+  .estatistica {
+    padding: 15px;
+    margin-bottom: 20px;
   }
 
   .estatistica i {
@@ -1028,20 +1608,30 @@ p {
   }
 
   .estatistica p {
-    font-size: 1em;
+    font-size: 0.9em;
   }
 }
 
+@media (max-width: 480px) {
+  .estatisticas-container {
+    flex-direction: column;
+    gap: 15px;
+  }
 
+  .estatistica {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
 
+  .estatistica i {
+    font-size: 2em;
+  }
 
+  .estatistica h3 {
+    font-size: 1.8em;
+  }
 
-
-
-
-
-
-
-
-
-
+  .estatistica p {
+    font-size: 0.85em;
+  }
+}
